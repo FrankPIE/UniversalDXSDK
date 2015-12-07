@@ -386,6 +386,31 @@ typedef struct D2D1_GRADIENT_MESH_PATCH
 } D2D1_GRADIENT_MESH_PATCH;
 
 
+//+-----------------------------------------------------------------------------
+//
+//  Flag:
+//      D2D1_SPRITE_OPTIONS
+//
+//------------------------------------------------------------------------------
+typedef enum D2D1_SPRITE_OPTIONS
+{
+        
+        //
+        // Use default sprite rendering behavior.
+        //
+        D2D1_SPRITE_OPTIONS_NONE = 0,
+        
+        //
+        // Bitmap interpolation will be clamped to the sprite's source rectangle.
+        //
+        D2D1_SPRITE_OPTIONS_CLAMP_TO_SOURCE_RECTANGLE = 1,
+        D2D1_SPRITE_OPTIONS_FORCE_DWORD = 0xffffffff
+
+} D2D1_SPRITE_OPTIONS;
+
+DEFINE_ENUM_FLAG_OPERATORS(D2D1_SPRITE_OPTIONS);
+
+
 #ifndef D2D_USE_C_DEFINITIONS
 
 
@@ -1054,6 +1079,208 @@ interface DX_DECLARE_INTERFACE("fd0ecb6b-91e6-411e-8655-395e760f91b4") ID2D1GdiM
 }; // interface ID2D1GdiMetafileSink1
 
 
+#if NTDDI_VERSION >= NTDDI_WIN10_TH2
+
+
+
+//+-----------------------------------------------------------------------------
+//
+//  Interface:
+//      ID2D1SpriteBatch
+//
+//------------------------------------------------------------------------------
+interface DX_DECLARE_INTERFACE("4dc583bf-3a10-438a-8722-e9765224f1f1") ID2D1SpriteBatch  : public ID2D1Resource
+{
+    
+    
+    //
+    // Adds sprites to the end of the sprite batch.
+    //
+    STDMETHOD(AddSprites)(
+        UINT32 spriteCount,
+        _In_reads_bytes_(sizeof(D2D1_RECT_F) + (spriteCount - 1) * destinationRectanglesStride) CONST D2D1_RECT_F *destinationRectangles,
+        _In_reads_bytes_opt_(sizeof(D2D1_RECT_U) + (spriteCount - 1) * sourceRectanglesStride) CONST D2D1_RECT_U *sourceRectangles = NULL,
+        _In_reads_bytes_opt_(sizeof(D2D1_COLOR_F) + (spriteCount - 1) * colorsStride) CONST D2D1_COLOR_F *colors = NULL,
+        _In_reads_bytes_opt_(sizeof(D2D1_MATRIX_3X2_F) + (spriteCount - 1) * transformsStride) CONST D2D1_MATRIX_3X2_F *transforms = NULL,
+        UINT32 destinationRectanglesStride = sizeof(D2D1_RECT_F),
+        UINT32 sourceRectanglesStride = sizeof(D2D1_RECT_U),
+        UINT32 colorsStride = sizeof(D2D1_COLOR_F),
+        UINT32 transformsStride = sizeof(D2D1_MATRIX_3X2_F) 
+        ) PURE;
+    
+    
+    //
+    // Set properties for existing sprites. All properties not specified are
+    // unmodified.
+    //
+    STDMETHOD(SetSprites)(
+        UINT32 startIndex,
+        UINT32 spriteCount,
+        _In_reads_bytes_opt_(sizeof(D2D1_RECT_F) + (spriteCount - 1) * destinationRectanglesStride) CONST D2D1_RECT_F *destinationRectangles = NULL,
+        _In_reads_bytes_opt_(sizeof(D2D1_RECT_U) + (spriteCount - 1) * sourceRectanglesStride) CONST D2D1_RECT_U *sourceRectangles = NULL,
+        _In_reads_bytes_opt_(sizeof(D2D1_COLOR_F) + (spriteCount - 1) * colorsStride) CONST D2D1_COLOR_F *colors = NULL,
+        _In_reads_bytes_opt_(sizeof(D2D1_MATRIX_3X2_F) + (spriteCount - 1) * transformsStride) CONST D2D1_MATRIX_3X2_F *transforms = NULL,
+        UINT32 destinationRectanglesStride = sizeof(D2D1_RECT_F),
+        UINT32 sourceRectanglesStride = sizeof(D2D1_RECT_U),
+        UINT32 colorsStride = sizeof(D2D1_COLOR_F),
+        UINT32 transformsStride = sizeof(D2D1_MATRIX_3X2_F) 
+        ) PURE;
+    
+    
+    //
+    // Retrieves sprite properties.
+    //
+    STDMETHOD(GetSprites)(
+        UINT32 startIndex,
+        UINT32 spriteCount,
+        _Out_writes_opt_(spriteCount) D2D1_RECT_F *destinationRectangles = NULL,
+        _Out_writes_opt_(spriteCount) D2D1_RECT_U *sourceRectangles = NULL,
+        _Out_writes_opt_(spriteCount) D2D1_COLOR_F *colors = NULL,
+        _Out_writes_opt_(spriteCount) D2D1_MATRIX_3X2_F *transforms = NULL 
+        ) CONST PURE;
+    
+    
+    //
+    // Retrieves the number of sprites in the sprite batch.
+    //
+    STDMETHOD_(UINT32, GetSpriteCount)(
+        ) CONST PURE;
+    
+    
+    //
+    // Removes all sprites from the sprite batch.
+    //
+    STDMETHOD_(void, Clear)(
+        ) PURE;
+}; // interface ID2D1SpriteBatch
+
+
+
+//+-----------------------------------------------------------------------------
+//
+//  Interface:
+//      ID2D1DeviceContext3
+//
+//------------------------------------------------------------------------------
+interface DX_DECLARE_INTERFACE("235a7496-8351-414c-bcd4-6672ab2d8e00") ID2D1DeviceContext3  : public ID2D1DeviceContext2
+{
+    
+    
+    //
+    // Creates a new sprite batch.
+    //
+    STDMETHOD(CreateSpriteBatch)(
+        _Outptr_ ID2D1SpriteBatch **spriteBatch 
+        ) PURE;
+    
+    
+    //
+    // Draws sprites in a sprite batch.
+    //
+    STDMETHOD_(void, DrawSpriteBatch)(
+        _In_ ID2D1SpriteBatch *spriteBatch,
+        UINT32 startIndex,
+        UINT32 spriteCount,
+        _In_ ID2D1Bitmap *bitmap,
+        D2D1_BITMAP_INTERPOLATION_MODE interpolationMode = D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,
+        D2D1_SPRITE_OPTIONS spriteOptions = D2D1_SPRITE_OPTIONS_NONE 
+        ) PURE;
+    
+    
+    //
+    // Draws all sprites in a sprite batch.
+    //
+    COM_DECLSPEC_NOTHROW
+    void
+    DrawSpriteBatch(
+        _In_ ID2D1SpriteBatch *spriteBatch,
+        _In_ ID2D1Bitmap *bitmap,
+        D2D1_BITMAP_INTERPOLATION_MODE interpolationMode = D2D1_BITMAP_INTERPOLATION_MODE_LINEAR,
+        D2D1_SPRITE_OPTIONS spriteOptions = D2D1_SPRITE_OPTIONS_NONE 
+        )  
+    {
+        return DrawSpriteBatch(spriteBatch, 0, spriteBatch->GetSpriteCount(), bitmap, interpolationMode, spriteOptions);
+    }
+}; // interface ID2D1DeviceContext3
+
+
+
+//+-----------------------------------------------------------------------------
+//
+//  Interface:
+//      ID2D1Device3
+//
+//------------------------------------------------------------------------------
+interface DX_DECLARE_INTERFACE("852f2087-802c-4037-ab60-ff2e7ee6fc01") ID2D1Device3  : public ID2D1Device2
+{
+    
+    
+    //
+    // Creates a new device context with no initially assigned target.
+    //
+    STDMETHOD(CreateDeviceContext)(
+        D2D1_DEVICE_CONTEXT_OPTIONS options,
+        _Outptr_ ID2D1DeviceContext3 **deviceContext3 
+        ) PURE;
+    
+    using ID2D1Device2::CreateDeviceContext;
+    
+    using ID2D1Device1::CreateDeviceContext;
+    
+    using ID2D1Device::CreateDeviceContext;
+}; // interface ID2D1Device3
+
+
+
+//+-----------------------------------------------------------------------------
+//
+//  Interface:
+//      ID2D1Factory4
+//
+//------------------------------------------------------------------------------
+interface DX_DECLARE_INTERFACE("bd4ec2d2-0662-4bee-ba8e-6f29f032e096") ID2D1Factory4  : public ID2D1Factory3
+{
+    
+    
+    //
+    // This creates a new Direct2D device from the given IDXGIDevice.
+    //
+    STDMETHOD(CreateDevice)(
+        _In_ IDXGIDevice *dxgiDevice,
+        _Outptr_ ID2D1Device3 **d2dDevice3 
+        ) PURE;
+    
+    using ID2D1Factory3::CreateDevice;
+    
+    using ID2D1Factory2::CreateDevice;
+    
+    using ID2D1Factory1::CreateDevice;
+}; // interface ID2D1Factory4
+
+
+
+//+-----------------------------------------------------------------------------
+//
+//  Interface:
+//      ID2D1CommandSink3
+//
+//------------------------------------------------------------------------------
+interface DX_DECLARE_INTERFACE("18079135-4cf3-4868-bc8e-06067e6d242d") ID2D1CommandSink3  : public ID2D1CommandSink2
+{
+    
+    STDMETHOD(DrawSpriteBatch)(
+        _In_ ID2D1SpriteBatch *spriteBatch,
+        UINT32 startIndex,
+        UINT32 spriteCount,
+        _In_ ID2D1Bitmap *bitmap,
+        D2D1_BITMAP_INTERPOLATION_MODE interpolationMode,
+        D2D1_SPRITE_OPTIONS spriteOptions 
+        ) PURE;
+}; // interface ID2D1CommandSink3
+
+
+#endif // #if NTDDI_VERSION >= NTDDI_WIN10_TH2
+
 
 #endif
 
@@ -1071,6 +1298,11 @@ EXTERN_C CONST IID IID_ID2D1Factory3;
 EXTERN_C CONST IID IID_ID2D1CommandSink2;
 EXTERN_C CONST IID IID_ID2D1GdiMetafile1;
 EXTERN_C CONST IID IID_ID2D1GdiMetafileSink1;
+EXTERN_C CONST IID IID_ID2D1SpriteBatch;
+EXTERN_C CONST IID IID_ID2D1DeviceContext3;
+EXTERN_C CONST IID IID_ID2D1Device3;
+EXTERN_C CONST IID IID_ID2D1Factory4;
+EXTERN_C CONST IID IID_ID2D1CommandSink3;
 
 
 #ifdef D2D_USE_C_DEFINITIONS
