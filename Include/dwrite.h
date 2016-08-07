@@ -10,9 +10,7 @@
 #ifndef DWRITE_H_INCLUDED
 #define DWRITE_H_INCLUDED
 
-#if _MSC_VER > 1000
 #pragma once
-#endif
 
 #ifndef DWRITE_NO_WINDOWS_H
 
@@ -56,7 +54,7 @@ enum DWRITE_FONT_FILE_TYPE
     /// <summary>
     /// OpenType font that contains a TrueType collection.
     /// </summary>
-    DWRITE_FONT_FILE_TYPE_TRUETYPE_COLLECTION,
+    DWRITE_FONT_FILE_TYPE_OPENTYPE_COLLECTION,
 
     /// <summary>
     /// Type 1 PFM font.
@@ -76,7 +74,10 @@ enum DWRITE_FONT_FILE_TYPE
     /// <summary>
     /// Bitmap .FON font.
     /// </summary>
-    DWRITE_FONT_FILE_TYPE_BITMAP
+    DWRITE_FONT_FILE_TYPE_BITMAP,
+
+    // The following name is obsolete, but kept as an alias to avoid breaking existing code.
+    DWRITE_FONT_FILE_TYPE_TRUETYPE_COLLECTION = DWRITE_FONT_FILE_TYPE_OPENTYPE_COLLECTION,
 };
 
 /// <summary>
@@ -97,9 +98,9 @@ enum DWRITE_FONT_FACE_TYPE
     DWRITE_FONT_FACE_TYPE_TRUETYPE,
 
     /// <summary>
-    /// OpenType font face that is a part of a TrueType collection.
+    /// OpenType font face that is a part of a TrueType or CFF collection.
     /// </summary>
-    DWRITE_FONT_FACE_TYPE_TRUETYPE_COLLECTION,
+    DWRITE_FONT_FACE_TYPE_OPENTYPE_COLLECTION,
 
     /// <summary>
     /// A Type 1 font face.
@@ -127,7 +128,10 @@ enum DWRITE_FONT_FACE_TYPE
     /// font file loaders) and the resulting font face object supports only the
     /// minimum functionality necessary to render glyphs.
     /// </summary>
-    DWRITE_FONT_FACE_TYPE_RAW_CFF
+    DWRITE_FONT_FACE_TYPE_RAW_CFF,
+
+    // The following name is obsolete, but kept as an alias to avoid breaking existing code.
+    DWRITE_FONT_FACE_TYPE_TRUETYPE_COLLECTION = DWRITE_FONT_FACE_TYPE_OPENTYPE_COLLECTION,
 };
 
 /// <summary>
@@ -2918,7 +2922,7 @@ interface DWRITE_DECLARE_INTERFACE("b7e6163e-7f46-43b4-84b3-e4e6249c365d") IDWri
         _In_reads_(glyphCount) UINT16 const* glyphIndices,
         _In_reads_(glyphCount) DWRITE_SHAPING_GLYPH_PROPERTIES const* glyphProps,
         UINT32 glyphCount,
-        _In_ IDWriteFontFace * fontFace,
+        _In_ IDWriteFontFace* fontFace,
         FLOAT fontEmSize,
         BOOL isSideways,
         BOOL isRightToLeft,

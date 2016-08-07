@@ -1674,6 +1674,7 @@ typedef enum _D3DRESOURCETYPE {
 
 
 
+
 /* CubeMap Face identifiers */
 typedef enum _D3DCUBEMAP_FACES
 {

@@ -1101,6 +1101,8 @@ interface DWRITE_DECLARE_INTERFACE("a71efdb4-9fdb-4838-ad90-cfc3be8c3daf") IDWri
         _Out_ DWRITE_FONT_METRICS1* fontMetrics
         ) PURE;
 
+    using IDWriteFontFace::GetMetrics;
+
     /// <summary>
     /// Gets common metrics for the font in design units.
     /// These metrics are applicable to all the glyphs within a font,
@@ -1354,6 +1356,8 @@ interface DWRITE_DECLARE_INTERFACE("acd16696-8c14-4f5d-877e-fe3fc1d32738") IDWri
     STDMETHOD_(void, GetMetrics)(
         _Out_ DWRITE_FONT_METRICS1* fontMetrics
         ) PURE;
+
+    using IDWriteFont::GetMetrics;
 
     /// <summary>
     /// Gets the PANOSE values from the font, used for font selection and
