@@ -1020,8 +1020,8 @@ typedef struct D2D1_FACTORY_OPTIONS
 
 /*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
 /*#pragma endregion*/
-#pragma region Application Family
-#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
+/*#pragma region Application Family*/
+/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
 
 
 EXTERN_C CONST IID IID_ID2D1Resource;
