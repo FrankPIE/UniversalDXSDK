@@ -8,7 +8,7 @@
 /* this ALWAYS GENERATED file contains the definitions for the interfaces */
 
 
- /* File created by MIDL compiler version 8.00.0613 */
+ /* File created by MIDL compiler version 8.01.0622 */
 /* @@MIDL_FILE_HEADING(  ) */
 
 
@@ -2125,9 +2125,10 @@ EXTERN_C const IID IID_ID3D11Query1;
 typedef 
 enum D3D11_FENCE_FLAG
     {
-        D3D11_FENCE_FLAG_NONE	= 0x1,
+        D3D11_FENCE_FLAG_NONE	= 0,
         D3D11_FENCE_FLAG_SHARED	= 0x2,
-        D3D11_FENCE_FLAG_SHARED_CROSS_ADAPTER	= 0x4
+        D3D11_FENCE_FLAG_SHARED_CROSS_ADAPTER	= 0x4,
+        D3D11_FENCE_FLAG_NON_MONITORED	= 0x8
     } 	D3D11_FENCE_FLAG;
 
 DEFINE_ENUM_FLAG_OPERATORS(D3D11_FENCE_FLAG);
