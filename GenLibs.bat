@@ -74,6 +74,12 @@ call :Test_Empty %ProgramFiles%
 if not errorlevel 1 set ProgramFiles=C:\Program Files
 
 call :Clear_Error
+if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
+	for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+		set "TOOLSET=vc141"
+		set "TOOLSET_ROOT=%%i\VC\"
+		goto :eof) )
+call :Clear_Error
 if not "_%VS140COMNTOOLS%_" == "__" (
 	set "TOOLSET=vc140"
 	set "TOOLSET_ROOT=%VS140COMNTOOLS%..\..\VC\"
@@ -258,6 +264,19 @@ if not "_%TOOLSET_ROOT%_" == "__" (
 set "LIB_TYPE=lib"
 set "_known_=1"
 :Skip_VC140
+if not "_%TOOLSET%_" == "_vc141_" goto Skip_VC141
+if "_%TOOLSET_ROOT%_" == "__" (
+	if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
+		for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+			set "TOOLSET_ROOT=%%i\VC\"
+			) ) )
+if not "_%TOOLSET_ROOT%_" == "__" (
+    if "_%VCINSTALLDIR%_" == "__" (
+		call "%TOOLSET_ROOT%\Auxiliary\Build\vcvarsall.bat" x86
+        ) )
+set "LIB_TYPE=lib"
+set "_known_=1"
+:Skip_VC141
 if not "_%TOOLSET%_" == "_mingw_" goto Skip_MINGW
 if not "_%TOOLSET_ROOT%_" == "__" (
 	set "PATH=%TOOLSET_ROOT%bin;%PATH%"
