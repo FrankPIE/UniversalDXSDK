@@ -281,8 +281,10 @@ void WINAPI XInputEnable
     _In_ BOOL enable     // [in] Indicates whether xinput is enabled or disabled. 
 );
 
+#if defined(_MSC_VER) && !defined(__clang__)
 #if(_WIN32_WINNT >= _WIN32_WINNT_WIN10)
 #pragma deprecated(XInputEnable)
+#endif
 #endif
 
 DWORD WINAPI XInputGetAudioDeviceIds
