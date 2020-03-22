@@ -18,10 +18,10 @@
 extern "C" {
 #endif //__cplusplus
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 ///////////////////////////////////////////////////////////////////////////
 // D3D10_DRIVER_TYPE
@@ -139,8 +139,8 @@ HRESULT WINAPI D3D10CreateDeviceAndSwapChain(
 
 HRESULT WINAPI D3D10CreateBlob(SIZE_T NumBytes, _Out_ LPD3D10BLOB *ppBuffer);
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #ifdef __cplusplus
 }

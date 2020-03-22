@@ -7,10 +7,10 @@
  *
  **************************************************************************/
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #define COM_NO_WINDOWS_H
 #include <objbase.h>
@@ -2388,7 +2388,7 @@ DEFINE_GUID(GUID_DSCFX_SYSTEM_NS, 0x5ab0882e, 0x7274, 0x4516, 0x87, 0x7d, 0x4e, 
 };
 #endif // __cplusplus
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 

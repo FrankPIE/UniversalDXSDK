@@ -10,7 +10,7 @@
 #ifndef __DINPUT_INCLUDED__
 #define __DINPUT_INCLUDED__
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
 #ifndef DIJ_RINGZERO
 
@@ -26,8 +26,8 @@ extern "C" {
 #endif
 
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
 
@@ -4306,8 +4306,8 @@ extern HRESULT WINAPI DirectInputCreateEx(HINSTANCE hinst, DWORD dwVersion, REFI
 #define DIBUTTON_ANY(instance)                  ( 0xFF004400 | instance )
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #ifdef __cplusplus
 };
@@ -4332,8 +4332,8 @@ extern HRESULT WINAPI DirectInputCreateEx(HINSTANCE hinst, DWORD dwVersion, REFI
 extern "C" {
 #endif
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 /*
  * Flag to indicate that the dwReserved2 field of the JOYINFOEX structure
@@ -4407,8 +4407,8 @@ typedef void (WINAPI* LPFNSHOWJOYCPL)( HWND hWnd );
  */
 #define JOY_US_VOLATILE             0x00000008L
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #ifdef __cplusplus
 };

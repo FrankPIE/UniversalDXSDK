@@ -52,10 +52,10 @@
 #error "This version of XAudio2 is available only in Windows 8 or later. Use the XAudio2 headers and libraries from the DirectX SDK with applications that target Windows 7 and earlier versions."
 #endif // (_WIN32_WINNT < _WIN32_WINNT_WIN8)
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES)
 
 //--------------<D-E-F-I-N-I-T-I-O-N-S>-------------------------------------//
 #include <windef.h>    // general windows types
@@ -304,7 +304,7 @@ X3DAUDIO_API_(void) X3DAudioCalculate (_In_reads_bytes_(X3DAUDIO_HANDLE_BYTESIZE
 
 #pragma pack(pop) // revert packing alignment
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES) */
+#pragma endregion
 //---------------------------------<-EOF->----------------------------------//
 

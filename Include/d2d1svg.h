@@ -16,10 +16,10 @@
 #include <d2d1_2.h>
 #endif // #ifndef _D2D1_2_H_
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 typedef interface ID2D1SvgDocument ID2D1SvgDocument;
 typedef interface ID2D1SvgElement ID2D1SvgElement;
@@ -1827,6 +1827,6 @@ interface DX_DECLARE_INTERFACE("86b88e4d-afa4-4d7b-88e4-68a51c4a0aec") ID2D1SvgD
 
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 #endif // #ifndef _D2D1_SVG_

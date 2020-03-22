@@ -21,10 +21,10 @@
 
 #ifndef D2D_USE_C_DEFINITIONS
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 namespace D2D1
 {
@@ -915,8 +915,8 @@ namespace D2D1
 
 } // namespace D2D1
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 #endif // #ifndef D2D_USE_C_DEFINITIONS
 

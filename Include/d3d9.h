@@ -17,9 +17,9 @@
 // include this file content only if compiling for DX9 interfaces
 #if(DIRECT3D_VERSION >= 0x0900)
 
-/*#include <winapifamily.h>*/
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#include <winapifamily.h>
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
 /* This identifier is passed to Direct3DCreate9 in order to ensure that an
@@ -2791,8 +2791,8 @@ typedef struct IDirect3DCryptoSession9 *LPDIRECT3DCRYPTOSESSION9, *PDIRECT3DCRYP
 };
 #endif
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #endif /* (DIRECT3D_VERSION >= 0x0900) */
 #endif /* _D3D_H_ */

@@ -108,8 +108,8 @@ extern "C"{
 #ifdef __cplusplus
 extern "C"{
 #endif
-/*#pragma region App Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region App Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 
 extern RPC_IF_HANDLE __MIDL_itf_d3d11_4_0000_0000_v0_0_c_ifspec;
@@ -4737,8 +4737,8 @@ typedef struct D3D11_FEATURE_DATA_D3D11_OPTIONS4
     BOOL ExtendedNV12SharedTextureSupported;
     } 	D3D11_FEATURE_DATA_D3D11_OPTIONS4;
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 DEFINE_GUID(IID_ID3D11Device4,0x8992ab71,0x02e6,0x4b8d,0xba,0x48,0xb0,0x56,0xdc,0xda,0x42,0xc4);
 DEFINE_GUID(IID_ID3D11Device5,0x8ffde202,0xa0e7,0x45df,0x9e,0x01,0xe8,0x37,0x80,0x1b,0x5e,0xa0);
 DEFINE_GUID(IID_ID3D11Multithread,0x9B7E4E00,0x342C,0x4106,0xA1,0x9F,0x4F,0x27,0x04,0xF6,0x89,0xF0);

@@ -9,7 +9,7 @@
 #ifndef __DINPUTD_INCLUDED__
 #define __DINPUTD_INCLUDED__
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
 #ifndef DIRECTINPUT_VERSION
 #define DIRECTINPUT_VERSION         0x0800
@@ -20,8 +20,8 @@
 extern "C" {
 #endif
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 /****************************************************************************
  *
@@ -753,8 +753,8 @@ typedef struct IDirectInputJoyConfig8 *LPDIRECTINPUTJOYCONFIG8;
  */
 #define DIDIFT_DELETE                   0x01000000
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #ifdef __cplusplus
 };

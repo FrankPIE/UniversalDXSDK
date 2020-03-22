@@ -8,10 +8,10 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #include "d3d11.h"
 
@@ -411,6 +411,6 @@ HRESULT WINAPI D3DX11CreateFFT3DComplex(
 
 #endif //__D3DX11GPGPU_H__
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 

@@ -14,10 +14,10 @@
 
 
            
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)           
            
 // Built in effect CLSIDs
 DEFINE_GUID(CLSID_D2D12DAffineTransform,        0x6AA97485, 0x6354, 0x4cfc, 0x90, 0x8C, 0xE4, 0xA7, 0x4F, 0x62, 0xC9, 0x6C);
@@ -1965,7 +1965,7 @@ typedef enum D2D1_OPACITYMETADATA_PROP
 } D2D1_OPACITYMETADATA_PROP;
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 #endif // #ifndef _D2D1_EFFECTS_

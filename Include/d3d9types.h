@@ -10,7 +10,7 @@
 #ifndef _d3d9TYPES_H_
 #define _d3d9TYPES_H_
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
 #ifndef DIRECT3D_VERSION
 #define DIRECT3D_VERSION         0x0900
@@ -29,8 +29,8 @@
 #pragma pack(4)
 #endif
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 // D3DCOLOR is equivalent to D3DFMT_A8R8G8B8
 #ifndef D3DCOLOR_DEFINED
@@ -81,11 +81,11 @@ typedef struct _D3DRECT {
 #define D3DRECT_DEFINED
 #endif
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
-/*#pragma region App Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region App Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 #ifndef D3DMATRIX_DEFINED
 typedef struct _D3DMATRIX {
@@ -103,11 +103,11 @@ typedef struct _D3DMATRIX {
 #define D3DMATRIX_DEFINED
 #endif
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 typedef struct _D3DVIEWPORT9 {
     DWORD       X;
@@ -2447,8 +2447,8 @@ typedef struct _D3DAES_CTR_IV
 #pragma warning(default:4201)
 #endif
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #endif /* (DIRECT3D_VERSION >= 0x0900) */
 #endif /* _d3d9TYPES(P)_H_ */

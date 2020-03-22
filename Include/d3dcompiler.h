@@ -10,7 +10,7 @@
 #ifndef __D3DCOMPILER_H__
 #define __D3DCOMPILER_H__
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
 // Current name of the DLL shipped in the same SDK as this header.
 
@@ -41,8 +41,8 @@ extern "C" {
 #endif //__cplusplus
 
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)
 
 //----------------------------------------------------------------------------
 // D3DReadFileToBlob:
@@ -556,12 +556,12 @@ D3DDecompressShaders(_In_reads_bytes_(SrcDataSize) LPCVOID pSrcData,
                      _Out_writes_(uNumShaders) ID3DBlob** ppShaders,
                      _Out_opt_ UINT* pTotalShaders);
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
+#pragma endregion
 
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 //----------------------------------------------------------------------------
 // D3DDisassemble10Effect:
@@ -575,8 +575,8 @@ D3DDisassemble10Effect(_In_ interface ID3D10Effect *pEffect,
                        _In_ UINT Flags,
                        _Out_ ID3DBlob** ppDisassembly);
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 
 #ifdef __cplusplus

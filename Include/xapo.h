@@ -90,10 +90,10 @@
 #error "This version of XAudio2 is available only in Windows 8 or later. Use the XAudio2 headers and libraries from the DirectX SDK with applications that target Windows 7 and earlier versions."
 #endif // (_WIN32_WINNT < _WIN32_WINNT_WIN8)
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES)
 
 //--------------<D-E-F-I-N-I-T-I-O-N-S>-------------------------------------//
 
@@ -645,6 +645,6 @@ DEFINE_GUID(IID_IXAPOParameters, 0x26D95C66, 0x80F2, 0x499A, 0xAD, 0x54, 0x5A, 0
     #pragma pack(pop) // revert packing alignment
 #endif // !defined(GUID_DEFS_ONLY)
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_TV_APP | WINAPI_PARTITION_TV_TITLE | WINAPI_PARTITION_GAMES) */
+#pragma endregion
 //---------------------------------<-EOF->----------------------------------//

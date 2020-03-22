@@ -17,10 +17,10 @@
 #endif // #ifndef _D2D1_EFFECTS_
 
            
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)           
            
 // Built in effect CLSIDs
 DEFINE_GUID(CLSID_D2D1YCbCr,                    0x99503cc1, 0x66c7, 0x45c9, 0xa8, 0x75, 0x8a, 0xd8, 0xa7, 0x91, 0x44, 0x01);
@@ -79,7 +79,7 @@ typedef enum D2D1_YCBCR_INTERPOLATION_MODE
 } D2D1_YCBCR_INTERPOLATION_MODE;
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 #endif // #ifndef _D2D1_EFFECTS_1_

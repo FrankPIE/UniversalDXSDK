@@ -12,7 +12,7 @@
 
 #include "d3d10shader.h"
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
 
 

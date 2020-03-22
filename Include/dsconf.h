@@ -9,10 +9,10 @@
 
 #ifndef __DSCONF_INCLUDED__
 #define __DSCONF_INCLUDED__
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
 #ifndef __DSOUND_INCLUDED__
@@ -197,8 +197,8 @@ typedef struct _DSPROPERTY_DIRECTSOUNDDEVICE_ENUMERATE_W_DATA
 #endif // __cplusplus
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #endif  // __DSCONF_INCLUDED__
 

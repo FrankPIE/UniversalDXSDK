@@ -11,10 +11,10 @@
 #ifndef __D3D10EFFECT_H__
 #define __D3D10EFFECT_H__
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #include "d3d10.h"
 
@@ -1455,8 +1455,8 @@ HRESULT WINAPI D3D10DisassembleEffect(_In_ ID3D10Effect *pEffect, BOOL EnableCol
 }
 #endif //__cplusplus
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #endif //__D3D10EFFECT_H__
 

@@ -43,8 +43,6 @@
 
 #endif /*DXGI_ERROR_INVALID_CALL*/
 
-// DXGI error messages have moved to winerror.h
-
 #define DXGI_CPU_ACCESS_NONE                    ( 0 )
 #define DXGI_CPU_ACCESS_DYNAMIC                 ( 1 )
 #define DXGI_CPU_ACCESS_READ_WRITE              ( 2 )

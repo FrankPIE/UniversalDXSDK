@@ -72,9 +72,9 @@ extern "C"{
 /* interface __MIDL_itf_dxgidebug_0000_0000 */
 /* [local] */ 
 
-/*#include <winapifamily.h>*/
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)*/
+#include <winapifamily.h>
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES)
 #define	DXGI_DEBUG_BINARY_VERSION	( 1 )
 
 typedef 
@@ -968,12 +968,12 @@ EXTERN_C const IID IID_IDXGIDebug1;
 /* interface __MIDL_itf_dxgidebug_0000_0003 */
 /* [local] */ 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
-/*#pragma endregion*/
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP | WINAPI_PARTITION_GAMES) */
+#pragma endregion
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 DEFINE_GUID(IID_IDXGIInfoQueue,0xD67441C7,0x672A,0x476f,0x9E,0x82,0xCD,0x55,0xB4,0x49,0x49,0xCE);
 DEFINE_GUID(IID_IDXGIDebug,0x119E7452,0xDE9E,0x40fe,0x88,0x06,0x88,0xF9,0x0C,0x12,0xB4,0x41);
 DEFINE_GUID(IID_IDXGIDebug1,0xc5a05f0c,0x16f2,0x4adf,0x9f,0x4d,0xa8,0xc4,0xd5,0x8a,0xc5,0x50);

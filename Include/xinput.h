@@ -12,10 +12,10 @@
 #endif
 
 #include <windef.h>
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 // Current name of the DLL shipped in the same SDK as this header.
 // The name reflects the current version
@@ -242,8 +242,8 @@ typedef struct _XINPUT_KEYSTROKE
 
 #endif //(_WIN32_WINNT >= _WIN32_WINNT_WIN8)
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 //
 // XInput APIs
@@ -252,8 +252,8 @@ typedef struct _XINPUT_KEYSTROKE
 extern "C" {
 #endif
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 DWORD WINAPI XInputGetState
 (
@@ -312,11 +312,11 @@ DWORD WINAPI XInputGetKeystroke
 
 #endif //(_WIN32_WINNT >= _WIN32_WINNT_WIN8)
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #if(_WIN32_WINNT < _WIN32_WINNT_WIN8)
 
@@ -329,8 +329,8 @@ DWORD WINAPI XInputGetDSoundAudioDeviceGuids
 
 #endif //(_WIN32_WINNT < _WIN32_WINNT_WIN8)
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #ifdef __cplusplus
 }

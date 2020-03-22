@@ -19,10 +19,10 @@
 #include <d2d1effects_1.h>
 #endif // #ifndef _D2D1_EFFECTS_1_
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 #ifndef D2D_USE_C_DEFINITIONS
 
@@ -198,7 +198,7 @@ extern "C"
         
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 #include <d2d1_2helper.h>
 #endif // #ifndef _D2D1_2_H_

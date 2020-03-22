@@ -17,10 +17,10 @@
 #endif // #ifndef _D2D1_EFFECTS_1_
 
            
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)           
            
 // Built in effect CLSIDs
 DEFINE_GUID(CLSID_D2D1Contrast,                 0xb648a78a, 0x0ed5, 0x4f80, 0xa9, 0x4a, 0x8e, 0x82, 0x5a, 0xca, 0x6b, 0x77);
@@ -632,9 +632,9 @@ typedef enum D2D1_HDRTONEMAP_DISPLAY_MODE
 } D2D1_HDRTONEMAP_DISPLAY_MODE;
 
 
-#endif // #if NTDDI_VERSION >= NTDDI_WIN10_RS1
+#endif // #if NTDDI_VERSION >= NTDDI_WIN10_RS5
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 #endif // #ifndef _D2D1_EFFECTS_2_

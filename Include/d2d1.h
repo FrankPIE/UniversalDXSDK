@@ -20,12 +20,12 @@
 #include <d2derr.h>
 #include <d2dbasetypes.h>
 #include <dxgiformat.h>
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 #include <d3d10_1.h>
-/*#else*/
-/*#include <d3dcommon.h>*/
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#else
+#include <d3dcommon.h>
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
 
 #ifndef D2D_USE_C_DEFINITIONS
 
@@ -38,14 +38,14 @@
 
 #endif // #ifndef D2D_USE_C_DEFINITIONS
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
 //
 // Forward declarations here
 //
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 typedef interface IDWriteTextFormat IDWriteTextFormat;
 typedef interface IDWriteTextLayout IDWriteTextLayout;
@@ -1018,12 +1018,12 @@ typedef struct D2D1_FACTORY_OPTIONS
 } D2D1_FACTORY_OPTIONS;
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 
 EXTERN_C CONST IID IID_ID2D1Resource;
@@ -1056,25 +1056,25 @@ EXTERN_C CONST IID IID_ID2D1DCRenderTarget;
 EXTERN_C CONST IID IID_ID2D1Factory;
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
 EXTERN_C CONST IID IID_ID2D1GdiInteropRenderTarget;
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 
 #ifndef D2D_USE_C_DEFINITIONS
 
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 /// <summary>
 /// The root interface for all resources in D2D.
@@ -3292,11 +3292,11 @@ interface DX_DECLARE_INTERFACE("2cd90698-12e2-11dc-9fed-001143a055f9") ID2D1Hwnd
 
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 /// <summary>
 /// Provides access to an device context that can accept GDI drawing commands.
@@ -3316,11 +3316,11 @@ interface DX_DECLARE_INTERFACE("e0db51c3-6f77-4bae-b3d5-e47509b35838") ID2D1GdiI
 
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 /// <summary>
 /// Issues drawing commands to a GDI device context.
@@ -3561,8 +3561,8 @@ interface DX_DECLARE_INTERFACE("06152247-6f50-465a-9245-118bfd3b6007") ID2D1Fact
 
 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 
 #endif
@@ -3571,8 +3571,8 @@ interface DX_DECLARE_INTERFACE("06152247-6f50-465a-9245-118bfd3b6007") ID2D1Fact
 #ifdef D2D_USE_C_DEFINITIONS
 
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 typedef interface ID2D1Resource ID2D1Resource;
 
@@ -3626,33 +3626,33 @@ typedef interface ID2D1BitmapRenderTarget ID2D1BitmapRenderTarget;
 
 typedef interface ID2D1HwndRenderTarget ID2D1HwndRenderTarget;
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 typedef interface ID2D1GdiInteropRenderTarget ID2D1GdiInteropRenderTarget;
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 typedef interface ID2D1DCRenderTarget ID2D1DCRenderTarget;
 
 typedef interface ID2D1Factory ID2D1Factory;
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 
 #endif
 
 
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)           
            
 #ifdef __cplusplus
 extern "C"
@@ -3763,7 +3763,7 @@ D2D1CreateFactory(
 
 #endif // #ifndef D2D_USE_C_DEFINITIONS
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
 
 #endif // #ifndef _D2D1_H_

@@ -618,9 +618,9 @@ extern "C"{
 
 #define D3D_SPEC_VERSION	( 1.050005 )
 #endif
-/*#include <winapifamily.h>*/
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#include <winapifamily.h>
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 #if !defined( __d3d10_1_h__ ) && !(D3D10_HEADER_MINOR_VERSION >= 1)
 #define D3D10_1_IA_VERTEX_INPUT_STRUCTURE_ELEMENT_COUNT D3D10_IA_VERTEX_INPUT_STRUCTURE_ELEMENT_COUNT
 #define D3D10_1_IA_VERTEX_INPUT_RESOURCE_SLOT_COUNT D3D10_IA_VERTEX_INPUT_STRUCTURE_ELEMENT_COUNT
@@ -1669,7 +1669,6 @@ struct CD3D10_BUFFER_DESC : public D3D10_BUFFER_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D10_BUFFER_DESC() {}
-    operator const D3D10_BUFFER_DESC&() const { return *this; }
 };
 #endif
 
@@ -1895,7 +1894,6 @@ struct CD3D10_TEXTURE1D_DESC : public D3D10_TEXTURE1D_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D10_TEXTURE1D_DESC() {}
-    operator const D3D10_TEXTURE1D_DESC&() const { return *this; }
 };
 #endif
 
@@ -2137,7 +2135,6 @@ struct CD3D10_TEXTURE2D_DESC : public D3D10_TEXTURE2D_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D10_TEXTURE2D_DESC() {}
-    operator const D3D10_TEXTURE2D_DESC&() const { return *this; }
 };
 #endif
 typedef struct D3D10_MAPPED_TEXTURE2D
@@ -2380,7 +2377,6 @@ struct CD3D10_TEXTURE3D_DESC : public D3D10_TEXTURE3D_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D10_TEXTURE3D_DESC() {}
-    operator const D3D10_TEXTURE3D_DESC&() const { return *this; }
 };
 #endif
 typedef struct D3D10_MAPPED_TEXTURE3D
@@ -6624,11 +6620,11 @@ EXTERN_C const IID IID_ID3D10Device;
 /* interface __MIDL_itf_d3d10_0000_0023 */
 /* [local] */ 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
-/*#pragma region Application Family*/
-/*#pragma region Application Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
+#pragma region Application Family
+#pragma region Application Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP)
 
 
 extern RPC_IF_HANDLE __MIDL_itf_d3d10_0000_0023_v0_0_c_ifspec;
@@ -6743,11 +6739,11 @@ EXTERN_C const IID IID_ID3D10Multithread;
 /* interface __MIDL_itf_d3d10_0000_0024 */
 /* [local] */ 
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
-/*#pragma endregion*/
-/*#pragma endregion*/
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) */
+#pragma endregion
+#pragma endregion
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 typedef 
 enum D3D10_CREATE_DEVICE_FLAG
     {
@@ -6771,8 +6767,8 @@ enum D3D10_CREATE_DEVICE_FLAG
 #include "d3d10misc.h" 
 #include "d3d10shader.h" 
 #include "d3d10effect.h" 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 DEFINE_GUID(IID_ID3D10DeviceChild,0x9B7E4C00,0x342C,0x4106,0xA1,0x9F,0x4F,0x27,0x04,0xF6,0x89,0xF0);
 DEFINE_GUID(IID_ID3D10DepthStencilState,0x2B4B1CC8,0xA4AD,0x41f8,0x83,0x22,0xCA,0x86,0xFC,0x3E,0xC6,0x75);
 DEFINE_GUID(IID_ID3D10BlendState,0xEDAD8D19,0x8A35,0x4d6d,0x85,0x66,0x2E,0xA2,0x76,0xCD,0xE1,0x61);

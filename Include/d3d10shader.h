@@ -13,10 +13,10 @@
 
 #include "d3d10.h"
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 
 //---------------------------------------------------------------------------
@@ -553,8 +553,8 @@ HRESULT WINAPI D3D10GetShaderDebugInfo(_In_reads_bytes_(BytecodeLength) CONST vo
 }
 #endif //__cplusplus
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
     
 #endif //__D3D10SHADER_H__
 

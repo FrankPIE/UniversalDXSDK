@@ -17,10 +17,10 @@
 // include this file content only if compiling for DX9 interfaces
 #if(DIRECT3D_VERSION >= 0x0900)
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 
 #if defined(_X86_) || defined(_IA64_)
 #pragma pack(4)
@@ -568,8 +568,8 @@ typedef struct _D3DCAPS9
 
 #pragma pack()
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 #endif /* (DIRECT3D_VERSION >= 0x0900) */
 #endif /* _d3d9CAPS_H_ */

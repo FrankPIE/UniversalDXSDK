@@ -1309,7 +1309,6 @@ struct CD3D11_RECT : public D3D11_RECT
         bottom = Bottom;
     }
     ~CD3D11_RECT() {}
-    operator const D3D11_RECT&() const { return *this; }
 };
 inline bool operator==( const D3D11_RECT& l, const D3D11_RECT& r )
 {
@@ -1354,7 +1353,6 @@ struct CD3D11_BOX : public D3D11_BOX
         back = Back;
     }
     ~CD3D11_BOX() {}
-    operator const D3D11_BOX&() const { return *this; }
 };
 inline bool operator==( const D3D11_BOX& l, const D3D11_BOX& r )
 {
@@ -1619,7 +1617,6 @@ struct CD3D11_DEPTH_STENCIL_DESC : public D3D11_DEPTH_STENCIL_DESC
         BackFace.StencilFunc = backStencilFunc;
     }
     ~CD3D11_DEPTH_STENCIL_DESC() {}
-    operator const D3D11_DEPTH_STENCIL_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -1842,7 +1839,6 @@ struct CD3D11_BLEND_DESC : public D3D11_BLEND_DESC
             RenderTarget[ i ] = defaultRenderTargetBlendDesc;
     }
     ~CD3D11_BLEND_DESC() {}
-    operator const D3D11_BLEND_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -2038,7 +2034,6 @@ struct CD3D11_RASTERIZER_DESC : public D3D11_RASTERIZER_DESC
         AntialiasedLineEnable = antialiasedLineEnable;
     }
     ~CD3D11_RASTERIZER_DESC() {}
-    operator const D3D11_RASTERIZER_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -2382,7 +2377,6 @@ struct CD3D11_BUFFER_DESC : public D3D11_BUFFER_DESC
         StructureByteStride = structureByteStride;
     }
     ~CD3D11_BUFFER_DESC() {}
-    operator const D3D11_BUFFER_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -2582,7 +2576,6 @@ struct CD3D11_TEXTURE1D_DESC : public D3D11_TEXTURE1D_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D11_TEXTURE1D_DESC() {}
-    operator const D3D11_TEXTURE1D_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -2790,7 +2783,6 @@ struct CD3D11_TEXTURE2D_DESC : public D3D11_TEXTURE2D_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D11_TEXTURE2D_DESC() {}
-    operator const D3D11_TEXTURE2D_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -2993,7 +2985,6 @@ struct CD3D11_TEXTURE3D_DESC : public D3D11_TEXTURE3D_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D11_TEXTURE3D_DESC() {}
-    operator const D3D11_TEXTURE3D_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -3604,7 +3595,6 @@ struct CD3D11_SHADER_RESOURCE_VIEW_DESC : public D3D11_SHADER_RESOURCE_VIEW_DESC
         Texture3D.MipLevels = mipLevels;
     }
     ~CD3D11_SHADER_RESOURCE_VIEW_DESC() {}
-    operator const D3D11_SHADER_RESOURCE_VIEW_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -3978,7 +3968,6 @@ struct CD3D11_RENDER_TARGET_VIEW_DESC : public D3D11_RENDER_TARGET_VIEW_DESC
         Texture3D.WSize = wSize;
     }
     ~CD3D11_RENDER_TARGET_VIEW_DESC() {}
-    operator const D3D11_RENDER_TARGET_VIEW_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -4266,7 +4255,6 @@ struct CD3D11_VIEWPORT : public D3D11_VIEWPORT
         MaxDepth = maxDepth;
     }
     ~CD3D11_VIEWPORT() {}
-    operator const D3D11_VIEWPORT&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -4449,7 +4437,6 @@ struct CD3D11_DEPTH_STENCIL_VIEW_DESC : public D3D11_DEPTH_STENCIL_VIEW_DESC
         }
     }
     ~CD3D11_DEPTH_STENCIL_VIEW_DESC() {}
-    operator const D3D11_DEPTH_STENCIL_VIEW_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -4801,7 +4788,6 @@ struct CD3D11_UNORDERED_ACCESS_VIEW_DESC : public D3D11_UNORDERED_ACCESS_VIEW_DE
         Texture3D.WSize = wSize;
     }
     ~CD3D11_UNORDERED_ACCESS_VIEW_DESC() {}
-    operator const D3D11_UNORDERED_ACCESS_VIEW_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -5923,7 +5909,6 @@ struct CD3D11_SAMPLER_DESC : public D3D11_SAMPLER_DESC
         MaxLOD = maxLOD;
     }
     ~CD3D11_SAMPLER_DESC() {}
-    operator const D3D11_SAMPLER_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -6297,7 +6282,6 @@ struct CD3D11_QUERY_DESC : public D3D11_QUERY_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D11_QUERY_DESC() {}
-    operator const D3D11_QUERY_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -6634,7 +6618,6 @@ struct CD3D11_COUNTER_DESC : public D3D11_COUNTER_DESC
         MiscFlags = miscFlags;
     }
     ~CD3D11_COUNTER_DESC() {}
-    operator const D3D11_COUNTER_DESC&() const { return *this; }
 };
 extern "C"{
 #endif
@@ -7471,7 +7454,8 @@ enum D3D11_SHARED_RESOURCE_TIER
     {
         D3D11_SHARED_RESOURCE_TIER_0	= 0,
         D3D11_SHARED_RESOURCE_TIER_1	= ( D3D11_SHARED_RESOURCE_TIER_0 + 1 ) ,
-        D3D11_SHARED_RESOURCE_TIER_2	= ( D3D11_SHARED_RESOURCE_TIER_1 + 1 ) 
+        D3D11_SHARED_RESOURCE_TIER_2	= ( D3D11_SHARED_RESOURCE_TIER_1 + 1 ) ,
+        D3D11_SHARED_RESOURCE_TIER_3	= ( D3D11_SHARED_RESOURCE_TIER_2 + 1 ) 
     } 	D3D11_SHARED_RESOURCE_TIER;
 
 typedef struct D3D11_FEATURE_DATA_D3D11_OPTIONS5
@@ -13555,7 +13539,7 @@ EXTERN_C const IID IID_ID3D11VideoDevice;
 /* interface __MIDL_itf_d3d11_0000_0040 */
 /* [local] */ 
 
-/*#include <winapifamily.h>*/
+#include <winapifamily.h>
 
 
 extern RPC_IF_HANDLE __MIDL_itf_d3d11_0000_0040_v0_0_c_ifspec;
@@ -14406,14 +14390,14 @@ enum D3D11_CREATE_DEVICE_FLAG
 #include "d3d11sdklayers.h" 
 #endif 
 #include "d3d10_1.h"
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 #include "d3d10shader.h" 
 #include "d3d10_1shader.h" 
 #include "d3d10misc.h" 
 #include "d3d10effect.h" 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 
 ///////////////////////////////////////////////////////////////////////////
 // D3D11CreateDevice
@@ -14472,8 +14456,8 @@ HRESULT WINAPI D3D11CreateDevice(
     _Out_opt_ D3D_FEATURE_LEVEL* pFeatureLevel,
     _COM_Outptr_opt_ ID3D11DeviceContext** ppImmediateContext );
 
-/*#pragma region Desktop Family*/
-/*#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)*/
+#pragma region Desktop Family
+#if WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP)
 ///////////////////////////////////////////////////////////////////////////
 // D3D11CreateDeviceAndSwapChain
 // ------------------------------
@@ -14548,8 +14532,8 @@ HRESULT WINAPI D3D11CreateDeviceAndSwapChain(
     _Out_opt_ D3D_FEATURE_LEVEL* pFeatureLevel,
     _COM_Outptr_opt_ ID3D11DeviceContext** ppImmediateContext );
 
-/*#endif*/ /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
-/*#pragma endregion*/
+#endif /* WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP) */
+#pragma endregion
 DEFINE_GUID(IID_ID3D11DeviceChild,0x1841e5c8,0x16b0,0x489b,0xbc,0xc8,0x44,0xcf,0xb0,0xd5,0xde,0xae);
 DEFINE_GUID(IID_ID3D11DepthStencilState,0x03823efb,0x8d8f,0x4e1c,0x9a,0xa2,0xf6,0x4b,0xb2,0xcb,0xfd,0xf1);
 DEFINE_GUID(IID_ID3D11BlendState,0x75b68faa,0x347d,0x4159,0x8f,0x45,0xa0,0x64,0x0f,0x01,0xcd,0x9a);
