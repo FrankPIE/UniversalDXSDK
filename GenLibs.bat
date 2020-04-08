@@ -75,7 +75,13 @@ if not errorlevel 1 set ProgramFiles=C:\Program Files
 
 call :Clear_Error
 if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
-	for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+	for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath -version 16.0`) do (
+		set "TOOLSET=vc142"
+		set "TOOLSET_ROOT=%%i\VC\"
+		goto :eof) )
+call :Clear_Error
+if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
+	for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath -version 15.0`) do (
 		set "TOOLSET=vc141"
 		set "TOOLSET_ROOT=%%i\VC\"
 		goto :eof) )
@@ -267,8 +273,9 @@ set "_known_=1"
 if not "_%TOOLSET%_" == "_vc141_" goto Skip_VC141
 if "_%TOOLSET_ROOT%_" == "__" (
 	if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
-		for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -latest -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath`) do (
+		for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath -version 15.0`) do (
 			set "TOOLSET_ROOT=%%i\VC\"
+			goto :eof
 			) ) )
 if not "_%TOOLSET_ROOT%_" == "__" (
     if "_%VCINSTALLDIR%_" == "__" (
@@ -277,6 +284,19 @@ if not "_%TOOLSET_ROOT%_" == "__" (
 set "LIB_TYPE=lib"
 set "_known_=1"
 :Skip_VC141
+if not "_%TOOLSET%_" == "_vc142_" goto Skip_VC142
+if "_%TOOLSET_ROOT%_" == "__" (
+	if exist "%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" (
+		for /f "usebackq tokens=*" %%i in (`"%ProgramFiles(x86)%\Microsoft Visual Studio\Installer\vswhere.exe" -products * -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath -version 16.0`) do (
+			set "TOOLSET_ROOT=%%i\VC\"
+			) ) )
+if not "_%TOOLSET_ROOT%_" == "__" (
+    if "_%VCINSTALLDIR%_" == "__" (
+		call "%TOOLSET_ROOT%\Auxiliary\Build\vcvarsall.bat" x86
+        ) )
+set "LIB_TYPE=lib"
+set "_known_=1"
+:Skip_VC142
 if not "_%TOOLSET%_" == "_mingw_" goto Skip_MINGW
 if not "_%TOOLSET_ROOT%_" == "__" (
 	set "PATH=%TOOLSET_ROOT%bin;%PATH%"
