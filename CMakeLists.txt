@@ -31,6 +31,7 @@ if (GENERATE_LIBRARYS)
             COMMAND "GenLibs.bat" 
             WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
             RESULT_VARIABLE result
+            ENCODING UTF8
         )
 
         if (NOT "_${result}_" STREQUAL "_0_")
