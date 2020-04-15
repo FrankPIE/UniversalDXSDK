@@ -41,17 +41,17 @@ if (GENERATE_LIBRARYS)
     endif()
 endif()
 
-set(UDXSDK_INSTALL_LIB_DIR "Lib" CACHE PATH "universal dxsdk librarys install directorys" FORCE)
-set(UDXSDK_INSTALL_INC_DIR "Include" CACHE PATH "universal dxsdk include install directorys" FORCE)
+set(UDXSDK_INSTALL_LIBDIR "Lib" CACHE PATH "universal dxsdk librarys install directorys" FORCE)
+set(UDXSDK_INSTALL_INCDIR "Include" CACHE PATH "universal dxsdk include install directorys" FORCE)
 
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/Include DESTINATION ${INSTALL_INC_DIR} FILES_MATCHING PATTERN "*.*")
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/Include DESTINATION "." FILES_MATCHING PATTERN "*.*")
 
 if (NOT SKIP_INSTALL_LIBRARYS)
     if (EXISTS ${CMAKE_HOME_DIRECTORY}/Lib)
         set(compileTargets x86 x64)
 
         foreach(var ${compileTargets})
-            install(DIRECTORY ${PROJECT_SOURCE_DIR}/Lib/${var} DESTINATION ${INSTALL_LIB_DIR} FILES_MATCHING PATTERN "*.lib" PATTERN "*.a")
+            install(DIRECTORY ${PROJECT_SOURCE_DIR}/Lib/${var} DESTINATION "${UDXSDK_INSTALL_LIBDIR}" FILES_MATCHING PATTERN "*.lib" PATTERN "*.a")
         endforeach()        
     endif()
 endif()
